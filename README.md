@@ -7,7 +7,8 @@ flipr
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of flipr is to …
+The goal of flipr is to process financial data and to be used for
+machine learning.
 
 Installation
 ------------
