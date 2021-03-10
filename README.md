@@ -5,6 +5,9 @@ flipr
 =====
 
 <!-- badges: start -->
+
+[![R build
+status](https://github.com/yimi97/flipr/workflows/R-CMD-check/badge.svg)](https://github.com/yimi97/flipr/actions)
 <!-- badges: end -->
 
 The goal of flipr is to process financial data and to be used for
