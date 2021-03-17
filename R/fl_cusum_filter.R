@@ -47,7 +47,5 @@ fl_cusum_filter <- function(x, h, just_dates = F){
   if (just_dates){
     return(as.Date(t_events))
   }
-  else {
-    return(x[as.Date(t_events)])
-  }
+  return(x[as.Date(t_events)])
 }

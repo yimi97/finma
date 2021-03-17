@@ -19,8 +19,8 @@ This function plots symmetric CUSUM filter result by plotting the line of
 stock price with dots of filtered data.
 }
 \examples{
-filtered_x <- fl_cusum_filter(apple, 10)
-fl_plot_cusum(apple, filtered_x)
+cusum <- fl_cusum_filter(apple, 10)
+fl_plot_cusum(apple, cusum)
 
 }
 \author{

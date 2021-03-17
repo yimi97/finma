@@ -11,6 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+options("max.print" = 100)
 ```
 
 # finma
@@ -61,22 +62,20 @@ fl_plot_cusum(x, fl_cusum_filter(x, 100))
 The triple-barrier labels an observation according to the first barrier touched out of three barriers. The two horizontal barriers are defined by profit-taking and stop-loss limits, which are a dynamic function of estimated volatility. The third barrier is defined as an expiration limit. If the upper barrier is touched, we label the observation as 1. If the lower barrier is touched, we label the observation as -1. If the vertical barrier is touched first, we have two options, `sign` and `zero`. If specify `sign`, the label is decided by the sign of the return. If specify `zero`, the label is 0.
 
 ```{r label}
-fl_get_label(x, fl_simulate_events(x), vertial_touch_label="zero")[1:10,]
+fl_get_label(x, fl_simulate_events(x), vertial_touch_label="zero") %>% 
+  select(lower, upper, t1, first_touch, return, label)
 ```
 
 #### Cross-Validation
 
-CV splits observations into two sets: the training set and the testing set. For financial data, which is serially correlated, when the training set contains information that appears in the testing set, the leakage takes place. There are two ways to reduce the leakage, purging and embargo. Purging is to purge from the training set that all observations whose labels overlapped in  time with those labels included in the testing set. Embargo is to impose an embargo on training observations after every test set.
+CV splits observations into two sets: the training set and the testing set. For financial data, which is serially correlated, when the training set contains information that appears in the testing set, the leakage takes place. There are two ways to reduce the leakage, purging and embargo. Purging is to purge from the training set that all observations whose labels overlapped in  time with those labels included in the testing set. Embargo is to impose an embargo on training observations after every test set. Which section.
 
-```{r purged_CV, eval=FALSE}
+```{r purged_cv}
 label <- fl_get_label(x, fl_simulate_events(x))
 cv_result <- fl_purge_cv(fl_label_index(label))
+str(cv_result, max.level = 2)
 ```
 
 ## Reference
 
 - Prado, M. L. (2018). Advances in financial machine learning. New Jersey: Wiley. 
-- Wickham, H. (2015). R Packages: Organize, Test, Document, and Share Your Code (1st ed.). O'Reilly Media. 
-- Wickham, H. (2019). Advanced R, Second Edition (Chapman & Hall/CRC The R Series) (2nd ed.). Chapman and Hall/CRC. 
-
-

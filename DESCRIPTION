@@ -1,12 +1,11 @@
 Package: finma
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Financial Machine Learning in R
+Version: 0.0.1
 Authors@R: 
     person(given = "Yi",
            family = "Mi",
            role = c("aut", "cre"),
-           email = "yi.mi@duke.edu",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "msif1900@gmail.com")
 Description: Financial Machine Learning in R.
 License: MIT + file LICENSE
 Encoding: UTF-8

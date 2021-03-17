@@ -8,5 +8,6 @@
 #' @useDynLib finma, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @author Yi Mi
+#' @references Prado, M. L. (2018). Advances in financial machine learning. New Jersey: Wiley.
 NULL
 utils::globalVariables(c("first_touch_index", "t0_index", "apply_ptsl_helper"))
