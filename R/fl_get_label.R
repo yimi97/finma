@@ -2,7 +2,7 @@
 #'
 #' This function finds the time of the first barrier touched.
 #'
-#' @param x A time series data
+#' @param x A zoo time series data
 #' @param events A data.frame of events with `t1` and `trgt`, can be simulated
 #' by calling function simulate_events
 #'               "t1": a series of time stamp of the vertical barrier
@@ -15,8 +15,7 @@
 #' @export
 #'
 #' @examples
-#' x <- apple
-#' fl_get_label(x, fl_simulate_events(x))
+#' fl_get_label(apple, fl_simulate_events(apple))
 #'
 #' @author Yi Mi
 fl_get_label <- function(x, events, vertial_touch_label="sign"){
@@ -27,7 +26,7 @@ fl_get_label <- function(x, events, vertial_touch_label="sign"){
                 (all(check %in% events_col)) && vertial_touch_label %in% option)
 
   # get first touch
-  barrier_touch <- fl_apply_ptsl(x, events)
+  barrier_touch <- fl_touch_barriers(x, events)
   first_touch <- apply(barrier_touch, 1, function(x) min(x, na.rm=T))
   all_touch <- cbind(barrier_touch, first_touch)
 

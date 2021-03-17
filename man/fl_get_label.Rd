@@ -7,7 +7,7 @@
 fl_get_label(x, events, vertial_touch_label = "sign")
 }
 \arguments{
-\item{x}{A time series data}
+\item{x}{A zoo time series data}
 
 \item{events}{A data.frame of events with \code{t1} and \code{trgt}, can be simulated
 by calling function simulate_events
@@ -25,8 +25,7 @@ A data.frame, combining the events, first touch and label
 This function finds the time of the first barrier touched.
 }
 \examples{
-x <- apple
-fl_get_label(x, fl_simulate_events(x))
+fl_get_label(apple, fl_simulate_events(apple))
 
 }
 \author{

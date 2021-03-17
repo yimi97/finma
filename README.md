@@ -51,8 +51,7 @@ is an example shows the result of the symmetric CUSUM filter.
 oil = Quandl("NSE/OIL") %>% select(Date, Close)
 oil = zoo(oil$Close, order.by = as.Date(oil$Date))
 x <- window(oil, start="2009-09-30", end="2012-01-01")
-filtered_x <- fl_filter_symmetric_cusum(x, 100)
-fl_plot_filter_result(x, filtered_x)
+fl_plot_cusum(x, fl_cusum_filter(x, 100))
 ```
 
 <img src="man/figures/README-cusum-1.png" width="100%" />
@@ -108,7 +107,7 @@ after every test set.
 
 ``` r
 label <- fl_get_label(x, fl_simulate_events(x))
-cv_result <- fl_purge_CV(fl_get_index(label))
+cv_result <- fl_purge_cv(fl_label_index(label))
 ```
 
 Reference

@@ -4,22 +4,21 @@
 #' method, designed to detect a shift in the mean value of a measured quantity
 #' away from a detect value.
 #'
-#' @param x A time series data we with to filter
+#' @param x A zoo time series data we with to filter
 #' @param h An integer of the threshold (the filter size)
 #' @param just_dates A Boolean, indicating if returning simply a vector of dates
-#' or a time series data
+#' or a zoo time series data
 #'
-#' @return A vector of dates or a time series data
+#' @return A vector of dates or a zoo time series data
 #' @export
 #'
 #' @importFrom assertthat assert_that not_empty is.flag
 #'
 #' @examples
-#' x <- apple
-#' fl_filter_symmetric_cusum(x, 10)
+#' fl_cusum_filter(apple, 10)
 #'
 #' @author Yi Mi
-fl_filter_symmetric_cusum <- function(x, h, just_dates = F){
+fl_cusum_filter <- function(x, h, just_dates = F){
   assert_that(not_empty(x) && is.numeric(h) && h > 0 && is.flag(just_dates))
 
   t_events <- c()

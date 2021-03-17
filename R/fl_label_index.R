@@ -13,10 +13,10 @@
 #'
 #' @examples
 #' label_df <- fl_get_label(apple, fl_simulate_events(apple))
-#' fl_get_index(label_df)
+#' fl_label_index(label_df)
 #'
 #' @author Yi Mi
-fl_get_index <- function(label_df) {
+fl_label_index <- function(label_df) {
   check <- c("first_touch", "label")
   df_col <- names(label_df)
   assert_that(not_empty(label_df) && (all(check %in% df_col)))
@@ -32,7 +32,7 @@ fl_get_index <- function(label_df) {
   t0_index <- rownames(df)
   df$t0_index <- as.numeric(t0_index)
 
-  for (i in 1:nrow(df)) {
+  for (i in seq(nrow(df))) {
     df[i,"first_touch_index"] <- as.numeric(df$t0_index[t0==df[i, "first_touch"]])
   }
 

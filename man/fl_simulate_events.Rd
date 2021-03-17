@@ -4,12 +4,12 @@
 \alias{fl_simulate_events}
 \title{Simulate events}
 \usage{
-fl_simulate_events(x, delta_t1 = 15, span = 100)
+fl_simulate_events(x, delta = 15, span = 100)
 }
 \arguments{
-\item{x}{A time series data we want to simulate}
+\item{x}{A zoo time series data we want to simulate}
 
-\item{delta_t1}{The interval between day 0 and t1, which is 15 as default}
+\item{delta}{The interval between day 0 and t1, which is 15 as default}
 
 \item{span}{Span days}
 }
@@ -25,8 +25,7 @@ unit width. We get the simulate \code{trgt} using the function
 fl_get_daily_volatility().
 }
 \examples{
-x <- apple
-fl_simulate_events(x)
+fl_simulate_events(apple)
 
 }
 \author{

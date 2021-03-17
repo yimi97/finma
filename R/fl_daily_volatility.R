@@ -5,18 +5,17 @@
 #' deviation. We can use the output of this function to set default profit
 #' taking and stop-loss limits.
 #'
-#' @param x A time series data we want to compute daily volatility
+#' @param x A zoo time series data we want to compute daily volatility
 #' @param span An integer of span days
 #'
-#' @return A time series data of daily volatility
+#' @return A zoo time series data of daily volatility
 #' @export
 #'
 #' @examples
-#' x <- apple
-#' fl_get_daily_volatility(x, 100)
+#' fl_daily_volatility(apple, 100)
 #'
 #' @author Yi Mi
-fl_get_daily_volatility <- function(x, span = 100) {
+fl_daily_volatility <- function(x, span = 100) {
   assert_that(not_empty(x) && is.numeric(span) && span > 0)
 
   index_x <- zoo::index(x)

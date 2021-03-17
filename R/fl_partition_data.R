@@ -17,11 +17,11 @@
 #'
 #' @examples
 #' label_df <- fl_get_label(apple, fl_simulate_events(apple))
-#' df <- fl_get_index(label_df)
-#' fl_create_data_partition(df)
+#' df <- fl_label_index(label_df)
+#' fl_partition_data(df)
 #'
 #' @author Yi Mi
-fl_create_data_partition <- function(df, purged = TRUE, p = 0.8) {
+fl_partition_data <- function(df, purged = TRUE, p = 0.8) {
   check <- c("t0_index", "first_touch_index", "label")
   df_col <- names(df)
   assert_that(not_empty(df) && (all(check %in% df_col)) && is.flag(purged) &&

@@ -53,8 +53,7 @@ The CUSUM filter is a quality-control method, designed to detect a shift in the 
 oil = Quandl("NSE/OIL") %>% select(Date, Close)
 oil = zoo(oil$Close, order.by = as.Date(oil$Date))
 x <- window(oil, start="2009-09-30", end="2012-01-01")
-filtered_x <- fl_filter_symmetric_cusum(x, 100)
-fl_plot_filter_result(x, filtered_x)
+fl_plot_cusum(x, fl_cusum_filter(x, 100))
 ```
 
 #### Triple-Barrier Labeling Method
@@ -71,7 +70,7 @@ CV splits observations into two sets: the training set and the testing set. For 
 
 ```{r purged_CV, eval=FALSE}
 label <- fl_get_label(x, fl_simulate_events(x))
-cv_result <- fl_purge_CV(fl_get_index(label))
+cv_result <- fl_purge_cv(fl_label_index(label))
 ```
 
 ## Reference

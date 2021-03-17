@@ -21,11 +21,11 @@
 #'
 #' @examples
 #' label_df <- fl_get_label(apple, fl_simulate_events(apple))
-#' df <- fl_get_index(label_df)
-#' fl_purge_CV(df)
+#' df <- fl_label_index(label_df)
+#' fl_purge_cv(df)
 #'
 #' @author Yi Mi
-fl_purge_CV <- function(df, purged = TRUE, k = 5) {
+fl_purge_cv <- function(df, purged = TRUE, k = 5) {
   check <- c("t0_index", "first_touch_index", "label")
   df_col <- names(df)
   assert_that(not_empty(df) &&(all(check %in% df_col)) &&
