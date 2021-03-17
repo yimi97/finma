@@ -5,7 +5,7 @@
 #'
 #' @name globalVariables
 #'
-#' @useDynLib flipr, .registration = TRUE
+#' @useDynLib finma, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @author Yi Mi
 NULL

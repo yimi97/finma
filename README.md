@@ -1,40 +1,40 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-flipr
+finma
 =====
 
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/yimi97/flipr/workflows/R-CMD-check/badge.svg)](https://github.com/yimi97/flipr/actions)
+status](https://github.com/yimi97/finma/workflows/R-CMD-check/badge.svg)](https://github.com/yimi97/finma/actions)
 <!-- badges: end -->
 
-The goal of flipr is to process financial data and to be used for
+The goal of finma is to process financial data and to be used for
 machine learning.
 
 Installation
 ------------
 
-You can install the released version of flipr from
+You can install the released version of finma from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-install.packages("flipr")
+install.packages("finma")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("yimi97/flipr")
+devtools::install_github("yimi97/finma")
 ```
 
 Example
 -------
 
 ``` r
-library(flipr)
+library(finma)
 library(tidyverse)
 library(Quandl)
 ```

@@ -17,7 +17,7 @@
 #' @return A data frame, the first touch of three barriers
 #' @export
 #' @import zoo
-#' @useDynLib flipr
+#' @useDynLib finma
 #' @importFrom assertthat assert_that not_empty is.flag
 #'
 #' @examples
