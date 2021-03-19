@@ -1,11 +1,12 @@
-#' Apple stock price
+#' Apple (AAPL) stock price
 #'
-#' A dataset containing the daily close stock prices of Apple company from
-#' 2020-01-01 to 2018-12-31.
+#' A time-series of the daily closing stock price of Apple (AAPL) from
+#' 2010-01-01 to 2018-12-31.
 #'
-#' @format A zoo series with 2347 data:
+#' @format A \code{zoo} series with 2,347 time points
+#'
 #' \describe{
-#'   \item{price}{stock close price, in US dollars}
+#'   \item{price}{closing stock price in US dollars}
 #' }
 #' @source \url{https://www.quandl.com/}
 "apple"
