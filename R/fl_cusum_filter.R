@@ -1,15 +1,15 @@
-#' Apply symmetric CUSUM filter
+#' Apply a symmetric CUSUM filter
 #'
-#' This function apply symmetric CUSUM filter, which is a quality-control
+#' This function applies a symmetric CUSUM filter, which is a quality-control
 #' method, designed to detect a shift in the mean value of a measured quantity
-#' away from a detect value.
+#' away from a target value.
 #'
-#' @param x A zoo time series data we with to filter
-#' @param h An integer of the threshold (the filter size)
-#' @param just_dates A Boolean, indicating if returning simply a vector of dates
-#' or a zoo time series data
+#' @param x A \code{zoo} time series object to filter.
+#' @param h A numeric vector of length one for the threshold (the filter size).
+#' @param just_dates A logical vector of length one. A value of \code{TRUE}
+#'   returns a vector of dates, otherwise a \code{zoo} series is returned.
 #'
-#' @return A vector of dates or a zoo time series data
+#' @return A vector of dates or a \code{zoo} time series object.
 #' @export
 #'
 #' @importFrom assertthat assert_that not_empty is.flag
@@ -17,8 +17,7 @@
 #' @examples
 #' fl_cusum_filter(apple, 10)
 #'
-#' @author Yi Mi
-fl_cusum_filter <- function(x, h, just_dates = F){
+fl_cusum_filter <- function(x, h, just_dates = FALSE){
   assert_that(not_empty(x) && is.numeric(h) && h > 0 && is.flag(just_dates))
 
   t_events <- c()
