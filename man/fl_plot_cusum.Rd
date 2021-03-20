@@ -2,27 +2,24 @@
 % Please edit documentation in R/fl_plot_cusum.R
 \name{fl_plot_cusum}
 \alias{fl_plot_cusum}
-\title{Plot symmetric CUSUM filter result}
+\title{Visualize the symmetric CUSUM filter result}
 \usage{
 fl_plot_cusum(x, cusum)
 }
 \arguments{
-\item{x}{A zoo time series data of daily stock price in zoo format}
+\item{x}{A \code{zoo} time series object of daily stock prices.}
 
-\item{cusum}{Filtered x using CUSUM}
+\item{cusum}{A filtered zoo time series object using CUSUM filtering.}
 }
 \value{
-The function prints the plot
+A \code{plot} object
 }
 \description{
-This function plots symmetric CUSUM filter result by plotting the line of
-stock price with dots of filtered data.
+This function displays the symmetric CUSUM filter result by plotting the
+asset's price and points that identify the filtered data.
 }
 \examples{
 cusum <- fl_cusum_filter(apple, 10)
 fl_plot_cusum(apple, cusum)
 
-}
-\author{
-Yi Mi
 }

@@ -1,19 +1,18 @@
-#' Plot symmetric CUSUM filter result
+#' Visualize the symmetric CUSUM filter result
 #'
-#' This function plots symmetric CUSUM filter result by plotting the line of
-#' stock price with dots of filtered data.
+#' This function displays the symmetric CUSUM filter result by plotting the
+#' asset's price and points that identify the filtered data.
 #'
-#' @param x A zoo time series data of daily stock price in zoo format
-#' @param cusum Filtered x using CUSUM
+#' @param x A \code{zoo} time series object of daily stock prices.
+#' @param cusum A filtered zoo time series object using CUSUM filtering.
 #'
-#' @return The function prints the plot
+#' @return A \code{plot} object
 #' @export
 #'
 #' @examples
 #' cusum <- fl_cusum_filter(apple, 10)
 #' fl_plot_cusum(apple, cusum)
 #'
-#' @author Yi Mi
 fl_plot_cusum <- function(x, cusum) {
   assert_that(not_empty(x) && not_empty(cusum))
 
