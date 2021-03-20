@@ -7,27 +7,25 @@
 fl_simulate_events(x, delta = 15, span = 100)
 }
 \arguments{
-\item{x}{A zoo time series data we want to simulate}
+\item{x}{A \code{zoo} time series object.}
 
-\item{delta}{The interval between day 0 and t1, which is 15 as default}
+\item{delta}{The time interval between day 0 and t1.}
 
-\item{span}{Span days}
+\item{span}{Span days.}
 }
 \value{
-A data frame of events with t1 and trgt
-"t1": The time stamp of vertical barriers
-"trgt": the unit absolute return used to set up horizontal barrier.
+A data frame of events.
+\code{t1}: the time stamp of vertical barriers.
+\code{trgt}: the unit absolute return used to set up horizontal
+barrier.
 }
 \description{
 This function simulates events to get the time stamp of vertical barriers
-and the unit absolute return which is used to set up horizontal barrier as
+and the unit absolute return which is used to set horizontal barriers as
 unit width. We get the simulate \code{trgt} using the function
-fl_get_daily_volatility().
+\code{fl_daily_volatility()}.
 }
 \examples{
 fl_simulate_events(apple)
 
-}
-\author{
-Yi Mi
 }
