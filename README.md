@@ -14,11 +14,11 @@ machine learning in finance. Each function has a common prefix, `fl_`,
 making them easy to identify. The functions in this package
 
   - compute price volatility,
-  - define class labels for financial time-series data according to the
+  - define class labels for financial time series data according to the
     triple-barrier method,
-  - appropriately filter financial time-series data,
+  - appropriately filter financial time series data,
   - partition data into training and testing with an embargo,
-  - implement a cross-validation procedure for financial time-series
+  - implement a cross-validation procedure for financial time series
     data with options to purge and embargo data,
   - and more\!
 
@@ -100,7 +100,7 @@ return. If `zero`, the label is set to 0.
 
 #### Cross-validation
 
-For financial time-series data, which is serially correlated, the
+For financial time series data, which is serially correlated, the
 training set contains information that appears in the testing set. This
 is known as leakage. To prevent leakage, data scientists can use a
 combination of purging and embargo.
