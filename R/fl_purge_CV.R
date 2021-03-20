@@ -1,22 +1,23 @@
-#' k-fold CV with purging and embargo
+#' Partition data for k-fold cross-validation with purging and embargo
 #'
-#' This function implements purged k-fold CV to purge from training set all
-#' observations whose labels overlapped in time with those labels included in
-#' the testing set to reduce leakage, which is "purging". In addition, it also
-#' eliminates from the training set observations that immediately follow an
-#' observation in the testing set to reduce serial correlation, which is
-#' "embargo".
+#' This function partitions time series data observations for k-fold
+#' cross-validation with purging and embargo. Observations from the training
+#' set are purged to prevent leakage from the training set to testing set.
+#' Embargo is also used to reduce serial correlation.
 #'
-#' @param df A data.frame with at least three columns,
-#'           "t0_index": Time index for the observation started,
-#'           "first_touch_index": Time index for the observation ended,
-#'           i.e. when the barriers are touched
-#'           "label": Integer label for the observation
-#' @param purged A Boolean indicating whether using purging and embargo or not
-#' @param k An integer for k-fold
+#' @param df A data frame with at least three columns.
+#'           \code{t0_index}: the time index for the start observations.
+#'           \code{first_touch_index}: the time index for the end observation
+#'           when the barriers are touched.
+#'           \code{label}: a numeric label for the observation.
+#' @param purged A logical vector indicating whether to purge observations or
+#'   not.
+#' @param k A numeric vector indicating the number of folds.
 #'
-#' @return If purged is true, return a list of k-fold training, test and purged set,
-#'         If purged is false, return a list of k-fold training and test set
+#' @return If \code{purged} is \code{TRUE}, return a list of k-fold training,
+#'   test and purged sets. If \code{purged} is \code{FALSE}, return a list of
+#'   k-fold training and test sets.
+#'
 #' @export
 #'
 #' @examples
@@ -24,7 +25,6 @@
 #' df <- fl_label_index(label_df)
 #' fl_purge_cv(df)
 #'
-#' @author Yi Mi
 fl_purge_cv <- function(df, purged = TRUE, k = 5) {
   check <- c("t0_index", "first_touch_index", "label")
   df_col <- names(df)

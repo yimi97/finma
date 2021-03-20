@@ -2,29 +2,26 @@
 % Please edit documentation in R/fl_label_index.R
 \name{fl_label_index}
 \alias{fl_label_index}
-\title{Get time index of observations started and ended}
+\title{Get time index of start and end observations}
 \usage{
 fl_label_index(label_df)
 }
 \arguments{
-\item{label_df}{A data.frame with at least two columns,
-"first_touch": Time when the observation ended (i.e. when the
-barriers are touched),
-"label": An integer label for the observation,
-and the index of label_df should be the time when the observation started}
+\item{label_df}{A data frame with at least two columns. \code{first_touch}:
+the time when the observation ended (i.e. when the barriers are touched).
+\code{label}: a numeric label for the observation, and the index of
+\code{label_df} should be the time when the observation began.}
 }
 \value{
-A data.frame of time index and label
+A data frame of time indices and labels
 }
 \description{
-This function compute the time index of observations started and ended (when
-the barriers are touched), used for k-fold CV and creating data partition.
+This function computes the time index of start and end observations (when
+the barriers are touched) used for k-fold cross-validation and creating
+a data partition.
 }
 \examples{
 label_df <- fl_get_label(apple, fl_simulate_events(apple))
 fl_label_index(label_df)
 
-}
-\author{
-Yi Mi
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fl_touch_barriers.R
 \name{fl_touch_barriers}
 \alias{fl_touch_barriers}
-\title{Apply ptsl on t1}
+\title{Get the time of the first barrier touch}
 \usage{
 fl_touch_barriers(
   x,
@@ -14,34 +14,31 @@ fl_touch_barriers(
 )
 }
 \arguments{
-\item{x}{A zoo time series data}
+\item{x}{A \code{zoo} time series object.}
 
-\item{events}{A data.frame, with t1 (the time stamp of vertical barrier) and
-trgt (the unit width of horizontal barriers)}
+\item{events}{A data frame, with \code{t1} - the time stamp of vertical
+barrier, and \code{trgt} - the unit width of horizontal barriers.}
 
-\item{lower_barrier}{A Boolean, indicating if applying lower horizontal
-barrier}
+\item{lower_barrier}{A logical vector to apply a lower horizontal
+barrier or not.}
 
-\item{upper_barrier}{A Boolean, indicating if applying upper horizontal barrier}
+\item{upper_barrier}{A logical vector to apply a upper horizontal
+barrier or not.}
 
-\item{lower_multiplier}{An integer, the factor that multiplies trgt to set
-the width of the lower barrier}
+\item{lower_multiplier}{A multiplicative numeric quantity to set the width
+of the lower barrier.}
 
-\item{upper_multiplier}{An integer, the factor that multiplies trgt to set
-the width of the upper barrier}
+\item{upper_multiplier}{A multiplicative numeric quantity to set the width
+of the upper barrier.}
 }
 \value{
-A data frame, the first touch of three barriers
+A data frame with the first touch of three barriers.
 }
 \description{
-This function calculates the first time the time series data touch the
-triple barriers, two horizontal barriers and one vertical barrier. Users can
-set barriers width.
+This function identifies the time when the first of three barriers (
+horizontal-upper, horizontal-lower, vertical) is touched.
 }
 \examples{
 fl_touch_barriers(apple, fl_simulate_events(apple))
 
-}
-\author{
-Yi Mi
 }

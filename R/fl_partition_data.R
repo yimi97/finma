@@ -1,18 +1,22 @@
-#' Create data partition
+#' Partition time series data for training and testing
 #'
-#' This function divides the data into a training set and a test set,
-#' the first 80% is the training set, and the last 20% is the test set.
+#' This function divides the data into train and test sets. The first 80% is
+#' observations are assigned to the training set; the last 20% are assigned to
+#' the testing set.
 #'
-#' @param df A data.frame with at least three columns,
-#'           "t0_index": Time index for the observation started,
-#'           "first_touch_index": Time index for the observation ended,
-#'           i.e. when the barriers are touched
-#'           "label": Integer label for the observation
-#' @param purged A Boolean indicating whether using purging and embargo or not
-#' @param p The percentage of training set
+#' @param df A data frame with at least three columns.
+#'           \code{t0_index}: the time index for the start observations.
+#'           \code{first_touch_index}: the time index for the end observation
+#'           when the barriers are touched.
+#'           \code{label}: a numeric label for the observation.
+#' @param purged A logical vector indicating whether to purge observations or
+#'   not.
+#' @param p The percentage of observations allocated to the training set.
 #'
-#' @return If purged is true, return a list of k-fold training, test and purged sets,
-#'         If purged is false, return a list of k-fold training and test sets
+#' @return If \code{purged} is \code{TRUE}, return a list of k-fold training,
+#'   test and purged sets. If \code{purged} is \code{FALSE}, return a list of
+#'   k-fold training and test sets.
+#'
 #' @export
 #'
 #' @examples
@@ -20,7 +24,6 @@
 #' df <- fl_label_index(label_df)
 #' fl_partition_data(df)
 #'
-#' @author Yi Mi
 fl_partition_data <- function(df, purged = TRUE, p = 0.8) {
   check <- c("t0_index", "first_touch_index", "label")
   df_col <- names(df)
