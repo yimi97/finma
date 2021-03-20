@@ -21,7 +21,7 @@ not.}
 \value{
 If \code{purged} is \code{TRUE}, return a list of k-fold training,
 test and purged sets. If \code{purged} is \code{FALSE}, return a list of
-k-fold training and test sets
+k-fold training and test sets.
 }
 \description{
 This function divides the data into train and test sets. The first 80\% is

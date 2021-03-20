@@ -15,7 +15,7 @@
 #'
 #' @return If \code{purged} is \code{TRUE}, return a list of k-fold training,
 #'   test and purged sets. If \code{purged} is \code{FALSE}, return a list of
-#'   k-fold training and test sets
+#'   k-fold training and test sets.
 #'
 #' @export
 #'
