@@ -7,27 +7,25 @@
 fl_get_label(x, events, vertial_touch_label = "sign")
 }
 \arguments{
-\item{x}{A zoo time series data}
+\item{x}{A \code{zoo} time series object}
 
-\item{events}{A data.frame of events with \code{t1} and \code{trgt}, can be simulated
-by calling function simulate_events
-"t1": a series of time stamp of the vertical barrier
-"trgt": the unit absolute return used to set up horizontal barrier.}
+\item{events}{A data frame of events with \code{t1} and \code{trgt}, can be simulated
+by calling function simulate_events "t1": a series of time stamp of the
+vertical barrier "trgt": the unit absolute return used to set up horizontal
+barrier.}
 
-\item{vertial_touch_label}{An argument with two options "sign" and "zero"
-"sign" (the label is decided by the sign of the return)
-"zero" (if vertical touch first then set label to 0)}
+\item{vertial_touch_label}{An argument with two options: "sign" and "zero".
+For "sign", the label is decided by the sign of the return. For "zero",
+if vertical barrier is touched first, then the label is set to 0.}
 }
 \value{
-A data.frame, combining the events, first touch and label
+A data frame of events with the first barrier touch label
 }
 \description{
-This function finds the time of the first barrier touched.
+This function identifies the time when the first of three barriers (
+horizontal-upper, horizontal-lower, vertical) is touched.
 }
 \examples{
 fl_get_label(apple, fl_simulate_events(apple))
 
-}
-\author{
-Yi Mi
 }

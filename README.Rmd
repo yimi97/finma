@@ -20,23 +20,35 @@ options("max.print" = 100)
 [![R build status](https://github.com/yimi97/finma/workflows/R-CMD-check/badge.svg)](https://github.com/yimi97/finma/actions)
 <!-- badges: end -->
 
-The goal of finma is to process financial data and to be used for machine learning.
+The goal of `finma` is to provide a suite of functions to facilitate machine
+learning in finance. Each function has a common prefix, `fl_`, making them
+easy to identify. The functions in this package 
+
+- compute price volatility,
+- define class labels for financial time-series data according to the
+  triple-barrier method,
+- appropriately filter financial time-series data,
+- partition data into training and testing with an embargo,
+- implement a cross-validation procedure for financial time-series data with
+  options to purge and embargo data,
+- and more!
 
 ## Installation
 
-You can install the released version of finma from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of `finma`
+from [CRAN](https://CRAN.R-project.org) with
 
 ``` r
 install.packages("finma")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+And the development version from [GitHub](https://github.com/) with
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("yimi97/finma")
 ```
-## Example
+## Usage
 
 ```{r example, message=FALSE}
 library(finma)
@@ -44,31 +56,43 @@ library(tidyverse)
 library(Quandl)
 ```
 
-Below is three main functions in this package.
-
 #### CUSUM filter
 
-The CUSUM filter is a quality-control method, designed to detect a shift in the mean value of a measured quantity away from a target value. Below is an example shows the result of the symmetric CUSUM filter.
+The CUSUM filter is a quality-control method, designed to detect a shift in the 
+mean value of a measured quantity away from a target value. 
 
 ```{r cusum}
-oil = Quandl("NSE/OIL") %>% select(Date, Close)
-oil = zoo(oil$Close, order.by = as.Date(oil$Date))
-x <- window(oil, start="2009-09-30", end="2012-01-01")
+oil <- Quandl("NSE/OIL") %>% select(Date, Close)
+oil <- zoo(oil$Close, order.by = as.Date(oil$Date))
+
+x <- window(oil, start = "2009-09-30", end = "2012-01-01")
 fl_plot_cusum(x, fl_cusum_filter(x, 100))
 ```
 
-#### Triple-Barrier Labeling Method
+#### Triple-barrier labeling method
 
-The triple-barrier labels an observation according to the first barrier touched out of three barriers. The two horizontal barriers are defined by profit-taking and stop-loss limits, which are a dynamic function of estimated volatility. The third barrier is defined as an expiration limit. If the upper barrier is touched, we label the observation as 1. If the lower barrier is touched, we label the observation as -1. If the vertical barrier is touched first, we have two options, `sign` and `zero`. If specify `sign`, the label is decided by the sign of the return. If specify `zero`, the label is 0.
+The triple-barrier method labels an observation according to the first barrier 
+touched out of three barriers. The two horizontal barriers are defined by 
+profit-taking and stop-loss limits, which are a dynamic function of an estimated 
+volatility. The third barrier is defined as an expiration limit. 
 
 ```{r label}
 fl_get_label(x, fl_simulate_events(x), vertial_touch_label="zero") %>% 
   select(lower, upper, t1, first_touch, return, label)
 ```
 
-#### Cross-Validation
+If the upper barrier is touched first, we label the observation as 1. If the 
+lower barrier is touched first, we label the observation as -1. If the vertical 
+barrier is touched first, we have two options: `sign` and `zero`. If `sign`, 
+the label is decided by the sign of the asset's return. If `zero`, the label is
+set to 0.
 
-CV splits observations into two sets: the training set and the testing set. For financial data, which is serially correlated, when the training set contains information that appears in the testing set, the leakage takes place. There are two ways to reduce the leakage, purging and embargo. Purging is to purge from the training set that all observations whose labels overlapped in  time with those labels included in the testing set. Embargo is to impose an embargo on training observations after every test set. Which section.
+#### Cross-validation
+
+For financial time-series data, which is serially correlated, the training set 
+contains information that appears in the testing set. This is known as leakage. 
+To prevent leakage, data scientists can use a combination of purging and 
+embargo. 
 
 ```{r purged_cv}
 label <- fl_get_label(x, fl_simulate_events(x))
@@ -76,6 +100,14 @@ cv_result <- fl_purge_cv(fl_label_index(label))
 str(cv_result, max.level = 2)
 ```
 
+## Getting help
+
+If you encounter a clear bug, please file an issue with a minimal reproducible 
+example on [GitHub](https://github.com/yimi97/finma/issues).
+
+More details on these concepts can be found in the great reference given below.
+
 ## Reference
 
-- Prado, M. L. (2018). Advances in financial machine learning. New Jersey: Wiley. 
+1. Prado, M. L. (2018). Advances in financial machine learning. New Jersey: 
+   Wiley. 

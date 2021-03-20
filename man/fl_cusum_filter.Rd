@@ -2,30 +2,27 @@
 % Please edit documentation in R/fl_cusum_filter.R
 \name{fl_cusum_filter}
 \alias{fl_cusum_filter}
-\title{Apply symmetric CUSUM filter}
+\title{Apply a symmetric CUSUM filter}
 \usage{
-fl_cusum_filter(x, h, just_dates = F)
+fl_cusum_filter(x, h, just_dates = FALSE)
 }
 \arguments{
-\item{x}{A zoo time series data we with to filter}
+\item{x}{A \code{zoo} time series object to filter.}
 
-\item{h}{An integer of the threshold (the filter size)}
+\item{h}{A numeric vector of length one for the threshold (the filter size).}
 
-\item{just_dates}{A Boolean, indicating if returning simply a vector of dates
-or a zoo time series data}
+\item{just_dates}{A logical vector of length one. A value of \code{TRUE}
+returns a vector of dates, otherwise a \code{zoo} series is returned.}
 }
 \value{
-A vector of dates or a zoo time series data
+A vector of dates or a \code{zoo} time series object.
 }
 \description{
-This function apply symmetric CUSUM filter, which is a quality-control
+This function applies a symmetric CUSUM filter, which is a quality-control
 method, designed to detect a shift in the mean value of a measured quantity
-away from a detect value.
+away from a target value.
 }
 \examples{
 fl_cusum_filter(apple, 10)
 
-}
-\author{
-Yi Mi
 }
