@@ -2,28 +2,24 @@
 % Please edit documentation in R/fl_daily_volatility.R
 \name{fl_daily_volatility}
 \alias{fl_daily_volatility}
-\title{Compute daily volatility}
+\title{Compute an asset's daily price volatility}
 \usage{
 fl_daily_volatility(x, span = 100)
 }
 \arguments{
-\item{x}{A zoo time series data we want to compute daily volatility}
+\item{x}{A \code{zoo} time series object}
 
-\item{span}{An integer of span days}
+\item{span}{A numeric vector of days}
 }
 \value{
-A zoo time series data of daily volatility
+A \code{zoo} time series object of daily price volatilities
 }
 \description{
-This function computes daily volatility at intraday estimation points,
-applying a span of \code{span} days to an exponentially weighted moving standard
-deviation. We can use the output of this function to set default profit
-taking and stop-loss limits.
+This function computes the daily price volatility at intraday estimation
+points, applying a span of days to an exponentially weighted moving standard
+deviation.
 }
 \examples{
 fl_daily_volatility(apple, 100)
 
-}
-\author{
-Yi Mi
 }

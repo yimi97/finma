@@ -1,20 +1,18 @@
-#' Compute daily volatility
+#' Compute an asset's daily price volatility
 #'
-#' This function computes daily volatility at intraday estimation points,
-#' applying a span of `span` days to an exponentially weighted moving standard
-#' deviation. We can use the output of this function to set default profit
-#' taking and stop-loss limits.
+#' This function computes the daily price volatility at intraday estimation
+#' points, applying a span of days to an exponentially weighted moving standard
+#' deviation.
 #'
-#' @param x A zoo time series data we want to compute daily volatility
-#' @param span An integer of span days
+#' @param x A \code{zoo} time series object
+#' @param span A numeric vector of days
 #'
-#' @return A zoo time series data of daily volatility
+#' @return A \code{zoo} time series object of daily price volatilities
 #' @export
 #'
 #' @examples
 #' fl_daily_volatility(apple, 100)
 #'
-#' @author Yi Mi
 fl_daily_volatility <- function(x, span = 100) {
   assert_that(not_empty(x) && is.numeric(span) && span > 0)
 
