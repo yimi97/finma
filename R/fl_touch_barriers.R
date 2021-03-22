@@ -24,16 +24,23 @@
 #' @examples
 #' fl_touch_barriers(apple, fl_simulate_events(apple))
 #'
-fl_touch_barriers <- function(x, events,
-                              lower_barrier = TRUE, upper_barrier = TRUE,
-                              lower_multiplier = 1, upper_multiplier = 1) {
+fl_touch_barriers <- function(x,
+                              events,
+                              lower_barrier = TRUE,
+                              upper_barrier = TRUE,
+                              lower_multiplier = 1,
+                              upper_multiplier = 1) {
   check <- c("t1", "trgt")
   events_col <- names(events)
-  assert_that(not_empty(x) && not_empty(events) &&
-                (all(check %in% events_col)) &&
-                is.flag(lower_barrier) && is.flag(upper_barrier) &&
-                is.numeric(lower_multiplier) && lower_multiplier > 0 &&
-                is.numeric(upper_multiplier) && upper_multiplier > 0)
+  assert_that(
+    not_empty(x) && not_empty(events) &&
+      (all(check %in% events_col)) &&
+      is.flag(lower_barrier) && is.flag(upper_barrier) &&
+      is.numeric(lower_multiplier) &&
+      lower_multiplier > 0 &&
+      is.numeric(upper_multiplier) &&
+      upper_multiplier > 0
+  )
 
   n <- length(x)
   n_events <- nrow(events)
@@ -62,7 +69,7 @@ fl_touch_barriers <- function(x, events,
     upper
   )
 
-  df[df==""] <- NA
+  df[df == ""] <- NA
   df$t1 <- events$t1
   row.names(df) <- index_events
   return(df)

@@ -87,6 +87,27 @@ barrier is touched first, we have two options: `sign` and `zero`. If `sign`,
 the label is decided by the sign of the asset's return. If `zero`, the label is
 set to 0.
 
+```{r echo = FALSE}
+x1 <- x[1:100]
+plot(x1, 
+     main = "Triple-barrier labeling method", 
+     xlab = "Time",
+     ylab = "Price",
+     col = "gray")
+x0 <- as.Date("2009-12-15")
+x1 <- as.Date("2010-01-15")
+y0 <- 1230
+y1 <- 1255
+segments(x0, y0, x1, y0, col = "blue", lty = 2)
+segments(x0, y1, x1, y1, col = "blue", lty = 2)
+segments(x0, y0, x0, y1, col = "blue")
+segments(x1, y0, x1, y1, col = "blue", lty = 2)
+```
+
+The plot is a schematic diagram of the Triple-barrier labeling method. The three dotted 
+lines are two horizontal and one vertical barrier. It is shown that the lower 
+barrier is touched first and this observation should be labeled 1.
+
 #### Cross-validation
 
 For financial time series data, which is serially correlated, the training set 

@@ -17,8 +17,9 @@
 #' @examples
 #' fl_cusum_filter(apple, 10)
 #'
-fl_cusum_filter <- function(x, h, just_dates = FALSE){
-  assert_that(not_empty(x) && is.numeric(h) && h > 0 && is.flag(just_dates))
+fl_cusum_filter <- function(x, h, just_dates = FALSE) {
+  assert_that(not_empty(x) &&
+                is.numeric(h) && h > 0 && is.flag(just_dates))
 
   t_events <- c()
   s_pos <- 0
@@ -32,18 +33,17 @@ fl_cusum_filter <- function(x, h, just_dates = FALSE){
            s_pos <<- max(0, s_pos + diff[i])
            s_neg <<- min(0, s_neg + diff[i])
 
-           if(s_neg < -h) {
+           if (s_neg < -h) {
              s_neg <<- 0
              t_events <<- c(t_events, diff_index[i])
            }
-           else if(s_pos > h) {
+           else if (s_pos > h) {
              s_pos <<- 0
              t_events <<- c(t_events, diff_index[i])
            }
-         }
-  )
+         })
 
-  if (just_dates){
+  if (just_dates) {
     return(as.Date(t_events))
   }
   return(x[as.Date(t_events)])

@@ -7,10 +7,12 @@
 fl_label_index(label_df)
 }
 \arguments{
-\item{label_df}{A data frame with at least two columns. \code{first_touch}:
-the time when the observation ended (i.e. when the barriers are touched).
-\code{label}: a numeric label for the observation, and the index of
-\code{label_df} should be the time when the observation began.}
+\item{label_df}{A data frame with at least two columns.
+\code{first_touch}: the time when the observation ended
+(i.e. when the barriers are touched).
+\code{label}: a numeric label for the observation, and the
+index of \code{label_df} should be the time when the
+observation began.}
 }
 \value{
 A data frame of time indices and labels

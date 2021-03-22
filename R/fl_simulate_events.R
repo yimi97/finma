@@ -24,7 +24,8 @@ fl_simulate_events <- function(x, delta = 15, span = 100) {
                 delta > 0 && is.numeric(span) && span > 0)
 
   index_x <- zoo::index(x)
-  events <- data.frame(side = rep(1, length(x)), row.names = index_x)
+  events <-
+    data.frame(side = rep(1, length(x)), row.names = index_x)
   t1 <- findInterval(index_x + delta, index_x, left.open = T)
   events$t1 <- index_x[t1]
   vol <- fl_daily_volatility(x, span)

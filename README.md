@@ -1,7 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# finma
+finma
+=====
 
 <!-- badges: start -->
 
@@ -13,16 +14,17 @@ The goal of `finma` is to provide a suite of functions to facilitate
 machine learning in finance. Each function has a common prefix, `fl_`,
 making them easy to identify. The functions in this package
 
-  - compute price volatility,
-  - define class labels for financial time series data according to the
+-   compute price volatility,
+-   define class labels for financial time series data according to the
     triple-barrier method,
-  - appropriately filter financial time series data,
-  - partition data into training and testing with an embargo,
-  - implement a cross-validation procedure for financial time series
+-   appropriately filter financial time series data,
+-   partition data into training and testing with an embargo,
+-   implement a cross-validation procedure for financial time series
     data with options to purge and embargo data,
-  - and more\!
+-   and more!
 
-## Installation
+Installation
+------------
 
 You can install the released version of `finma` from
 [CRAN](https://CRAN.R-project.org) with
@@ -38,7 +40,8 @@ And the development version from [GitHub](https://github.com/) with
 devtools::install_github("yimi97/finma")
 ```
 
-## Usage
+Usage
+-----
 
 ``` r
 library(finma)
@@ -98,6 +101,13 @@ the vertical barrier is touched first, we have two options: `sign` and
 `zero`. If `sign`, the label is decided by the sign of the asset’s
 return. If `zero`, the label is set to 0.
 
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
+The plot is a schematic diagram of the Triple-barrier labeling method.
+The three dotted lines are two horizontal and one vertical barrier. It
+is shown that the lower barrier is touched first and this observation
+should be labeled 1.
+
 #### Cross-validation
 
 For financial time series data, which is serially correlated, the
@@ -132,7 +142,8 @@ str(cv_result, max.level = 2)
 #>   ..$ purged:'data.frame':   6 obs. of  3 variables:
 ```
 
-## Getting help
+Getting help
+------------
 
 If you encounter a clear bug, please file an issue with a minimal
 reproducible example on
@@ -141,7 +152,8 @@ reproducible example on
 More details on these concepts can be found in the great reference given
 below.
 
-## Reference
+Reference
+---------
 
 1.  Prado, M. L. (2018). Advances in financial machine learning. New
     Jersey: Wiley.
