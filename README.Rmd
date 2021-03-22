@@ -104,9 +104,9 @@ segments(x0, y0, x0, y1, col = "blue")
 segments(x1, y0, x1, y1, col = "blue", lty = 2)
 ```
 
-The plot is a schematic diagram of the Triple-barrier labeling method. The three dotted 
-lines are two horizontal and one vertical barrier. It is shown that the lower 
-barrier is touched first and this observation should be labeled 1.
+The plot is a schematic diagram of the Triple-barrier labeling method. The three 
+dotted lines are two horizontal and one vertical barrier. It is shown that the 
+lower barrier is touched first and this observation should be labeled -1.
 
 #### Cross-validation
 

@@ -106,7 +106,7 @@ return. If `zero`, the label is set to 0.
 The plot is a schematic diagram of the Triple-barrier labeling method.
 The three dotted lines are two horizontal and one vertical barrier. It
 is shown that the lower barrier is touched first and this observation
-should be labeled 1.
+should be labeled -1.
 
 #### Cross-validation
 
