@@ -6,8 +6,7 @@ Authors@R:
            family = "Mi",
            role = c("aut", "cre"),
            email = "msif1900@gmail.com")
-Description: The goal of finma is to provide a suite of functions to facilitate 
-machine learning in finance.
+Description: The goal of finma is to provide a suite of functions to facilitate machine learning in finance.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

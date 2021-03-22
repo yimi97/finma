@@ -9,8 +9,8 @@ fl_get_label(x, events, vertial_touch_label = "sign")
 \arguments{
 \item{x}{A \code{zoo} time series object}
 
-\item{events}{A data frame of events, can be simulated by calling function
-simulate_events.
+\item{events}{A data frame of events with at least two columns, can be
+simulated by calling function simulate_events.
 \code{t1}: a series of time stamp of the vertical barrier.
 \code{trgt}: the unit absolute return used to set up horizontal
 barrier.}
