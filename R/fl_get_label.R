@@ -5,8 +5,8 @@
 #' label of -1, 0, or 1.
 #'
 #' @param x A \code{zoo} time series object
-#' @param events A data frame of events, can be simulated by calling function
-#'               simulate_events.
+#' @param events A data frame of events with at least two columns, can be
+#'               simulated by calling function simulate_events.
 #'               \code{t1}: a series of time stamp of the vertical barrier.
 #'               \code{trgt}: the unit absolute return used to set up horizontal
 #'               barrier.
